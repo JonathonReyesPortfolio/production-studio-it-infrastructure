@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Team Yas Action Design - Home</title>
+  <link rel="icon" type="image/png" href="images/TY_DARUMA.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body class="fade-in" style="opacity: 0; background: black;">
+
+  <!-- ✅ Transition Logo -->
+  <div class="transition-logo-wrapper">
+    <img src="images/TY_DARUMA.png" class="transition-logo" alt="Transition Logo" />
+  </div>
+
+  <!-- ✅ Hero Section with Video -->
+  <section class="hero">
+    <div class="video-wrapper">
+      <video loading="lazy" autoplay muted loop playsinline class="video-bg">
+        <source src="videos/720p.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+
+      <!-- ✅ Video Overlay Logo -->
+      <div class="video-overlay-logo">
+        <img src="images/TY_PATCH2025.png" alt="Overlay Logo" />
+      </div>
+    </div>
+  </section>
+
+  <!-- ✅ Header / Navigation -->
+  <header>
+    <div class="logo-wrapper">
+      <img src="images/TY_LOGO.png" class="logo" alt="Team Yasnas Logo" />
+    </div>
+
+    <div class="menu-toggle" onclick="toggleMenu()">
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+    </div>
+
+    <nav>
+      <a href="index.html" class="active">HOME</a>
+      <a href="services.html">SERVICES</a>
+      <a href="facility.html">FACILITY</a>
+      <a href="#contact">CONTACT</a>
+    </nav>
+  </header>
+
+  <!-- ✅ About Section (New) -->
+  <section class="about-intro">
+    <div class="intro-text">
+      <h1>ABOUT TEAM YAS</h1>
+      <p>
+        TEAM YAS is a Melbourne-based action design studio bridging the worlds of film, television, and video games. With industry-proven techniques, we bring fight choreography, motion capture, and pre-visualisation together into one cohesive package.
+        <br><br>
+        Our unique background blends martial arts, live stunt performance, and digital workflows to produce content that’s both cinematic and efficient. Whether it's on set, in Unreal Engine, or through strategic consultation — we design action that moves audiences.
+      </p>
+    </div>
+  </section>
+
+  <!-- ✅ Contact Section -->
+  <section id="contact" class="contact-section">
+    <div class="contact-container">
+
+      <!-- Left Column -->
+      <div class="contact-info">
+        <img src="images/TY_LOGO.png" alt="Team Yas Logo" class="team-logo" />
+
+        <div class="contact-address">
+          <p>380 Somerville Rd,<br>West Footscray MELBOURNE, VIC 3012<br></p>
+        </div>
+
+        <div class="map-container">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3134.981112732508!2d144.87527271526864!3d-37.80606607975273!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad66853eb8bdf01%3A0x1fa8f6d9c9f7d51!2s380%20Somerville%20Rd%2C%20West%20Footscray%20VIC%203012!5e0!3m2!1sen!2sau!4v1715743512345!5m2!1sen!2sau"
+            width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+
+        <div class="social-icon">
+  <a href="https://www.instagram.com/teamyasaction/" target="_blank" rel="noopener noreferrer">
+    <i class="fa-brands fa-instagram"></i>
+  </a>
+  
+</div>
+      </div>
+
+      <!-- Right Column -->
+      <div class="contact-form">
+        <h2>CONTACT US</h2>
+        <form id="contact-form" action="https://formspree.io/f/mvgadeev" method="POST">
+          <div class="name-fields">
+            <div class="form-group">
+              <label for="first-name">FIRST NAME <span>(required)</span></label>
+              <input type="text" id="first-name" name="first-name" required />
+            </div>
+            <div class="form-group">
+              <label for="last-name">LAST NAME <span>(required)</span></label>
+              <input type="text" id="last-name" name="last-name" required />
+            </div>
+          </div>
+
+          <div class="email-message-fields">
+            <div class="form-group">
+              <label for="email">EMAIL <span>(required)</span></label>
+              <input type="email" id="email" name="email" required />
+            </div>
+            <div class="form-group">
+              <label for="message">MESSAGE <span>(required)</span></label>
+              <textarea id="message" name="message" rows="5" required></textarea>
+            </div>
+          </div>
+
+          <div class="button-row">
+  <button type="submit">SUBMIT</button>
+  <a href="mailto:info@teamyas.com" class="email-link">OR EMAIL US DIRECTLY</a>
+</div>
+           
+          </div>
+       
+    </div>
+  </section>
+
+  <script src="script.js" defer></script>
+  <footer class="site-footer">
+  <p>WEBSITE DESIGNED IN HOUSE @ TEAM YAS ACTION DESIGN</p>
+</footer>
+</body>
+</html>

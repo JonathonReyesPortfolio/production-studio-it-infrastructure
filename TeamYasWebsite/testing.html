@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Slider Test</title>
+  <style>
+    body {
+      background: black;
+      color: white;
+      font-family: sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    .gallery-section {
+      max-width: 1000px;
+      margin: auto;
+      text-align: center;
+      position: relative;
+    }
+
+    .slider {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .slide-track {
+      position: relative;
+    }
+
+    .slide-container {
+      display: none;
+      position: relative;
+    }
+
+    .slide-container.active {
+      display: block;
+    }
+
+    .slide {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .slide-heading {
+      position: absolute;
+      bottom: 20%;
+      left: 5%;
+      font-size: 2.5rem;
+      font-weight: bold;
+      color: red;
+      text-shadow: 2px 2px black;
+      z-index: 2;
+      max-width: 90%;
+    }
+
+    .slide-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0, 0, 0, 0.5);
+      border: none;
+      color: white;
+      font-size: 2rem;
+      padding: 10px;
+      cursor: pointer;
+      z-index: 10;
+    }
+
+    .slide-arrow.left {
+      left: 10px;
+    }
+
+    .slide-arrow.right {
+      right: 10px;
+    }
+
+    .caption {
+      margin-top: 20px;
+      font-size: 1.2rem;
+      color: #ccc;
+    }
+  </style>
+</head>
+<body>
+
+  <section class="gallery-section">
+    <div class="slider">
+      <button class="slide-arrow left">&#10094;</button>
+      <div class="slide-track">
+
+        <div class="slide-container active" data-heading="INDUSTRY GRADE EQUIPMENT" data-caption="We have industry grade things.">
+          <img src="https://via.placeholder.com/1000x600?text=Slide+1" class="slide" />
+          <div class="slide-heading"></div>
+        </div>
+
+        <div class="slide-container" data-heading="PRO STUNT TEAM" data-caption="A tight knit team that can perform a variety of high-end stunts for your production.">
+          <img src="https://via.placeholder.com/1000x600?text=Slide+2" class="slide" />
+          <div class="slide-heading"></div>
+        </div>
+
+        <div class="slide-container" data-heading="CINEMATIC CAMERA WORK" data-caption="RED Camera Action Shot.">
+          <img src="https://via.placeholder.com/1000x600?text=Slide+3" class="slide" />
+          <div class="slide-heading"></div>
+        </div>
+
+      </div>
+      <button class="slide-arrow right">&#10095;</button>
+    </div>
+
+    <p class="caption" id="slide-caption">Behind the Scenes – BTS Prep</p>
+  </section>
+
+<script>
+  const slideContainers = document.querySelectorAll('.slide-container');
+  const caption = document.getElementById('slide-caption');
+  const leftBtn = document.querySelector('.slide-arrow.left');
+  const rightBtn = document.querySelector('.slide-arrow.right');
+  let currentSlide = 0;
+
+  function showSlide(index) {
+    slideContainers.forEach((container, i) => {
+      container.classList.remove('active');
+    });
+
+    const activeContainer = slideContainers[index];
+    activeContainer.classList.add('active');
+
+    // ✅ FILL THE HEADING DIV ON EVERY SWITCH
+    const headingText = activeContainer.getAttribute('data-heading');
+    const headingDiv = activeContainer.querySelector('.slide-heading');
+    if (headingDiv) headingDiv.textContent = headingText;
+
+    // ✅ FILL THE CAPTION
+    const captionText = activeContainer.getAttribute('data-caption');
+    if (caption) caption.textContent = captionText;
+  }
+
+  leftBtn.addEventListener("click", () => {
+    currentSlide = (currentSlide - 1 + slideContainers.length) % slideContainers.length;
+    showSlide(currentSlide);
+  });
+
+  rightBtn.addEventListener("click", () => {
+    currentSlide = (currentSlide + 1) % slideContainers.length;
+    showSlide(currentSlide);
+  });
+
+  // ✅ IMPORTANT: Initialize everything on load
+  window.addEventListener("DOMContentLoaded", () => {
+    showSlide(currentSlide);
+  });
+</script>

@@ -1,0 +1,772 @@
+@charset "utf-8";
+/* CSS Document */
+
+/* ========== Global Styles ========== */
+@font-face {
+  font-family: 'Evogria';
+  src: url('fonts/Evogria.otf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html {
+  height: 100%;
+  font-family: 'Evogria', sans-serif;
+  color: #FAE80B;
+  scroll-behavior: smooth;
+  margin: 0;
+  padding: 0;
+  background-color: black;
+ 
+}
+
+/* ✅ Make form elements inherit Evogria font */
+.contact-form input,
+.contact-form textarea,
+.contact-form button,
+.contact-form label
+.contact-form,
+.contact-form h2,
+.contact-form form  {
+  font-family: 'Evogria', sans-serif !important;
+}
+
+/* page transition */
+/* Base fade transition for the whole page */
+/* Fade in on page load */
+body.fade-in {
+  animation: fadeIn 0.5s ease-in forwards;
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* Fade out before navigation */
+body.fade-out {
+  opacity: 0;
+  transition: opacity 0.5s ease-in;
+}
+
+/* Logo Wrapper - TRANSITION PAGE (centered) */
+#transition-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: black;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 1;
+  pointer-events: all;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.transition-logo-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: black; /* ensures logo sits on a black canvas */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  opacity: 1;
+  pointer-events: none;
+  animation: fadeOutLogo 0.5s ease-in 0.5s forwards;
+}
+
+/* Logo image */
+.transition-logo {
+  width: 200px;
+  max-width: 60vw;
+  filter: drop-shadow(0 0 15px #ffff33)!important; /* vibrant yellow */
+}
+
+/* Fade out logo after page fade-in */
+@keyframes fadeOutLogo {
+  to {
+    opacity: 0;
+  }
+}
+/* Logo Style */
+.transition-logo {
+  width: 200px;
+  max-width: 60vw;
+  filter: drop-shadow(0 0 10px red);
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+/* Optional: Pulse animation */
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.9;
+  }
+}
+
+
+
+/* ========== Logo Glow ========== */
+.logo {
+  max-height: 50px;
+  transition: filter 0.3s ease;
+}
+
+.logo-wrapper:hover .logo {
+  filter: drop-shadow(0 0 1px red) drop-shadow(0 0 3px red) drop-shadow(0 0 3px red);
+}
+
+/* ========== Hero Video Background ========== */
+/* ========== Hero Video Section ========== */
+.hero {
+  width: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: black;
+  padding-top: env(safe-area-inset-top); /* account for mobile safe zones */
+  overflow: hidden;
+}
+
+.video-wrapper {
+  position: relative;
+  width: 100vw;
+  height: 100dvh;
+  overflow: hidden;
+  background-color: black;
+}
+
+.video-bg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  object-fit: contain;
+  width: 100%;
+  height: 100%;
+}
+/* Overlay Logo Positioned in Center of Video */
+.video-overlay-logo {
+  opacity: 0; 
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  pointer-events: none;
+  animation: fadeInOverlay 1s ease-in 2s forwards;
+}
+
+.video-overlay-logo img {
+  width: clamp(100px, 20vw, 200px);
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  filter: drop-shadow(0 0 10px yellow);
+  transition: filter 0.3s ease-in-out;
+}
+
+/* Optional hover effect */
+.video-overlay-logo img:hover {
+  filter: drop-shadow(0 0 20px #ffcc00) brightness(1.2);
+}
+
+/* Mobile Optimization */
+@media (max-width: 768px) {
+  .video-bg {
+    object-fit: contain;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    transform: none;
+  }
+  .video-overlay-logo img {
+    width: clamp(80px, 30vw, 150px);
+  }
+}
+
+@keyframes fadeInOverlay {
+  to {
+    opacity: 1;
+  }
+}
+
+
+/* ========== Header and Navigation ========== */
+header {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 30px;
+  z-index: 10;
+  background: transparent;
+}
+
+nav {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+nav a {
+  text-decoration: none;
+  font-size: 1.2rem;
+  color: yellow;
+  transition: all 0.3s ease-in-out;
+}
+
+nav a:hover {
+  color: red;
+  text-shadow: 0 0 1px red, 0 0 2px red;
+}
+
+nav a.active {
+  color: red;
+  text-shadow: 0 0 1px red, 0 0 2px red;
+  pointer-events: none; /* optional: disables clicking on the current page */
+}
+
+/* ========== Mobile Nav Toggle ========== */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.bar {
+  width: 25px;
+  height: 3px;
+  background-color: yellow;
+  margin: 4px 0;
+}
+
+@media (max-width: 768px) {
+  nav {
+    display: none;
+    position: absolute;
+    top: 60px;
+    right: 30px;
+    flex-direction: column;
+    background: rgba(0, 0, 0, 0.9);
+    padding: 10px 20px;
+    border-radius: 5px;
+  }
+
+  nav.active {
+    display: flex;
+  }
+
+  .menu-toggle {
+    display: flex;
+  }
+}
+/* ========== Home Page Intro ========== */
+
+.about-intro {
+  background-color: yellow;
+  color: black;
+  padding: 80px 20px;
+  text-align: center;
+  font-family: 'Evogria', sans-serif;
+}
+
+.about-intro .intro-text {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.about-intro h1 {
+  font-family: 'Evogria', sans-serif;
+  font-size: 3rem;
+  margin-bottom: 20px;
+  color: black;
+  text-align: center;
+}
+
+.about-intro p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+}
+
+
+/* ========== Services Page Intro ========== */
+/* === SECTION BASE === */
+.services-intro {
+  background-color: black;
+  color: white;
+  font-family: 'Evogria', sans-serif;
+  text-align: center;
+  padding: 80px 20px;
+}
+
+.services-intro h1 {
+  font-size: 3rem;
+  margin-bottom: 30px;
+  padding: 0;
+  color: white;
+}
+
+/* === SLIDER LAYOUT === */
+.text-carousel-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  margin-top: 20px; /* spacing between SERVICES and slides */
+}
+
+/* === ARROWS === */
+.arrow-button {
+  font-size: 3rem;
+  color: yellow;
+  cursor: pointer;
+  user-select: none;
+  transition: transform 0.2s ease;
+  flex-shrink: 0;
+}
+
+.arrow-button:hover {
+  transform: scale(1.2);
+}
+
+/* === SLIDE CONTENT === */
+.text-carousel {
+  max-width: 800px;
+  text-align: center;
+  flex: 1 1 auto;
+}
+
+.text-slide {
+  display: none;
+  animation: fadeIn 0.4s ease-in-out;
+}
+
+.text-slide.active {
+  display: block;
+}
+
+.text-slide h2 {
+  font-size: 2rem;
+  margin-bottom: 15px;
+  margin-top: 0;
+}
+
+.text-slide p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  margin: 0 auto;
+  max-width: 800px;
+  white-space: pre-line;
+  padding: 0 10px;
+}
+
+/* === ANIMATION === */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* === MOBILE === */
+@media (max-width: 768px) {
+  .arrow-button {
+    font-size: 2.5rem;
+  }
+
+  .text-slide h2 {
+    font-size: 1.5rem;
+  }
+
+  .text-slide p {
+    font-size: 1rem;
+  }
+}
+
+
+
+/* ========== Facilities Page Intro ========== */
+.facilities-intro {
+  background-color: #000;
+  color: #fff;
+  text-align: center;
+  padding: 80px 20px;
+  font-family: 'Evogria', sans-serif;
+}
+
+.facilities-intro h1 {
+  font-size: 3rem;
+  margin-bottom: 30px;
+  color: white;
+}
+
+.location-info p {
+  font-size: 1.1rem;
+  line-height: 1.0;
+  max-width: 800px;
+  margin: 0 auto 40px auto;
+  white-space: pre-line;
+}
+
+.facility-list {
+  display: flex;
+  justify-content: center;
+  gap: 60px;
+  flex-wrap: wrap;
+  text-align: left;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.facility-list .column {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 200px;
+}
+
+/* Mobile fix */
+@media (max-width: 768px) {
+  .facility-list {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .column {
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+  }
+}
+
+.facility-list p {
+  font-size: 1rem;
+}
+/* ========== Gallery Slider ========== */
+.gallery-section {
+  background-color: #ff0;
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.slider {
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: nowrap;
+  overflow: hidden;
+}
+
+.slide-track {
+  width: 80%;
+  max-width: 900px;
+  position: relative;
+  aspect-ratio: 16 / 9; /* Or whatever your media ratio is */
+  overflow: hidden;
+}
+
+.slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  opacity: 0;
+  transition: opacity 0.8s ease-in-out;
+  z-index: 0;
+  pointer-events: none;
+  object-fit: contain;
+}
+
+.slide.active {
+  opacity: 1;
+  z-index: 1;
+  pointer-events: auto;
+}
+
+.slide-arrow {
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: red;
+  cursor: pointer;
+}
+
+.caption {
+  margin-top: 20px;
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: black;
+  opacity: 0;
+  transition: opacity 0.4s ease-in-out;
+}
+
+.caption.show {
+  opacity: 1;
+}
+
+
+
+
+/* ✅ Contact Section Styles */
+
+/* ✅ Contact Section Styles */
+
+.contact-section {
+  background-color: #2d2d2d;
+  color: #FAE80B;
+  padding: 60px 20px;
+  border-top: 5px solid #ffdf00;
+  font-family: 'Evogria', sans-serif;
+}
+
+.contact-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+/* LEFT COLUMN */
+.contact-info {
+  flex: 1 1 45%;
+  min-width: 300px;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.contact-logo img,
+.team-logo {
+  width: 200px;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  margin-bottom: 20px;
+}
+
+.contact-address p {
+  font-family: 'Evogria', sans-serif;
+  color: #FAE80B;
+  font-size: 1rem;
+  line-height: 1.6;
+  margin: 0;
+}
+/* SOCIAL ICON */
+.social-icon {
+  margin-top: 0px;
+  text-align: left; /* or center, depending on your layout */
+}
+
+.social-icon a {
+  color: #E1306C;
+  font-size: 2rem;
+  transition: transform 0.3s ease;
+  display: inline-block;
+}
+
+.social-icon a:hover {
+  transform: scale(1.1);
+}
+/* MAP STYLING */
+.map-container {
+  width: 100%;
+  height: auto;
+}
+
+.map-container iframe {
+  width: 100%;
+  height: 200px;
+  border: none;
+  border-radius: 6px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+}
+
+/* RIGHT COLUMN */
+.contact-form {
+  flex: 1 1 45%;
+  min-width: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.contact-form h2 {
+  font-size: 1.8rem;
+  color: white;
+  margin-bottom: 10px;
+  font-family: 'Anton', sans-serif;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+}
+
+.form-group label {
+  font-size: 1rem;
+  font-family: 'Anton', sans-serif;
+  color: white;
+  margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+  width: 100%;
+  padding: 10px;
+  font-size: 1rem;
+  font-family: 'Anton', sans-serif;
+  border: none;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+/* BUTTON */
+.contact-form button {
+  margin-top: 10px;
+  background-color: #ffdf00;
+  color: black;
+  border: none;
+  padding: 12px 24px;
+  font-weight: bold;
+  cursor: pointer;
+  width: fit-content;
+  font-family: 'Evogria', sans-serif;
+  font-size: 1rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: all 0.3s ease-in-out;
+}
+
+.contact-form button:hover {
+  background-color: red;
+  color: white;
+  box-shadow: inset 0 0 15px rgba(255, 0, 0, 0.8), 0 0 10px rgba(255, 0, 0, 0.6);
+}
+
+.form-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.email-link {
+  color: red;
+  text-decoration: none;
+  font-weight: bold;
+  font-family: inherit;
+  font-size: 16px;
+}
+
+.email-link:hover {
+  text-decoration: underline;
+}
+
+
+.button-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 15px;
+  flex-wrap: wrap; /* just in case for mobile responsiveness */
+}
+
+.inline-text {
+  color: red; /* your red text from the screenshot */
+  font-size: 14px;
+  font-family: inherit;
+  font-weight: normal;
+}
+
+.email-button {
+  background-color: #ffcc00; /* match Team Yas color */
+  color: black;
+  padding: 10px 20px;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  display: inline-block;
+  font-family: inherit;
+}
+
+.email-button:hover {
+  background-color: #e6b800;
+}
+
+/* FOOTER */
+.site-footer {
+  background-color: #000;
+  color: #aaa; /* Light grey */
+  text-align: center;
+  font-size: 0.9rem;
+  padding: 20px;
+  font-family: 'Evogria', sans-serif;
+  letter-spacing: 1px;
+}
+
+.modal {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.8);
+  display: none;
+  z-index: 9999;
+  overflow: hidden;
+}
+
+.modal-content {
+  position: absolute;
+  transition: transform 0.4s ease, top 0.4s ease, left 0.4s ease, width 0.4s ease, height 0.4s ease;
+  transform-origin: center center;
+  z-index: 10000;
+  width: auto;
+  height: auto;
+  max-width: 90vw;
+  max-height: 90vh;
+  object-fit: contain;
+  border-radius: 6px;
+}
+
+.modal-close {
+  position: fixed;
+  top: 20px;
+  right: 30px;
+  font-size: 40px;
+  color: white;
+  cursor: pointer;
+  z-index: 10001;
+}

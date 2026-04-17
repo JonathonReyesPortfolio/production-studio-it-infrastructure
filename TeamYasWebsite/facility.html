@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Team Yas Action Design - Facility</title>
+  <link rel="icon" type="image/png" href="images/TY_DARUMA.png" type="image/x-icon">
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet" />
+</head>
+
+<body class="fade-in" style="opacity: 0; background: black;">
+  <!-- Transition Logo -->
+  <div class="transition-logo-wrapper">
+    <img src="images/TY_DARUMA.png" class="transition-logo" alt="Transition Logo" />
+  </div>
+
+
+  <!-- Comment section -->
+<section class="facilities-intro">
+  <h1>FACILITY</h1>
+  <div class="location-info">
+    <p>FULLY FUNCTIONING STUDIO CONVENIENTLY LOCATED JUST -<br>
+    - 20 MINUTES FROM MELBOURNE'S CBD<br>
+    - 20 MINUTES FROM DOCKLANDS STUDIOS<br>
+    - 30 MINUTES FROM MELBOURNE INTERNATIONAL AIRPORT</p>
+  </div>
+
+  <div class="facility-list">
+    <div class="column">
+      <p>- FULL RIGGING SYSTEM</p>
+      <p>- STUNT EQUIPMENT (CRASH PADS, MATS, ETC.)</p>
+      <p>- CUSTOMISABLE SCAFFOLD SYSTEM</p>
+      <p>- MAX HEIGHT 7.5M</p>
+    </div>
+    <div class="column">
+      <p>- ELECTRIC 4M x 4MW ROLLER DOORS</p>
+      <p>- CONCRETE WALLS AND FLOORS</p>
+      <p>- BATHROOM WITH SHOWER</p>
+      <p>- KITCHENETTE</p>
+    </div>
+  </div>
+</section>
+
+  <!-- Header -->
+  <header>
+    <div class="logo-wrapper">
+      <a href="home.html">
+        <img src="images/TY_LOGO.png" class="logo" alt="Team Yasnas Logo" />
+      </a>
+    </div>
+    <div class="menu-toggle" onclick="toggleMenu()">
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+    </div>
+    <nav>
+      <a href="index.html">HOME</a>
+      <a href="services.html">SERVICES</a>
+      <a href="facility.html" class="active">FACILITY</a>
+      <a href="#contact">CONTACT</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Facility Slider -->
+    <section class="gallery-section">
+      <div class="slider">
+        <button class="slide-arrow left">&#10094;</button>
+        <div class="slide-track">
+          <img src="images/Slider Facility/SIGNAGE 1.webp" alt="Studio Space" class="slide active" data-caption="">
+          <img src="images/Slider Facility/FACILITY 1.webp" alt="Rig Setup" class="slide" data-caption="">
+          <img src="images/Slider Facility/FACILITY 2.webp" alt="Props and Equipment" class="slide" data-caption="">
+          <img src="images/Slider Facility/FLOOR SPACE 3.webp" alt="Props and Equipment" class="slide" data-caption="">
+          <img src="images/Slider Facility/FACILITY 6.webp" alt="Props and Equipment" class="slide" data-caption="">
+          <img src="images/Slider Facility/RIG 1.webp" alt="Props and Equipment" class="slide" data-caption="">
+          <img src="images/Slider Facility/FACILITY 5.webp" alt="Props and Equipment" class="slide" data-caption="">
+          
+        </div>
+        <button class="slide-arrow right">&#10095;</button>
+      </div>
+      <p class="caption" id="slide-caption">140 SQM Open Studio</p>
+    </section>
+  </main>
+
+  <!-- ✅ Contact Section -->
+<section id="contact" class="contact-section">
+  <div class="contact-container">
+    
+    <!-- Left Column -->
+    <div class="contact-info">
+      <img src="images/TY_LOGO.png" alt="Team Yas Logo" class="team-logo" />
+
+      <div class="contact-address">
+        <p>380 Somerville Rd,<br>West Footscray MELBOURNE, VIC 3012<br></p>
+      </div>
+
+<div class="map-container">
+  <iframe
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3134.981112732508!2d144.87527271526864!3d-37.80606607975273!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad66853eb8bdf01%3A0x1fa8f6d9c9f7d51!2s380%20Somerville%20Rd%2C%20West%20Footscray%20VIC%203012!5e0!3m2!1sen!2sau!4v1715743512345!5m2!1sen!2sau"
+    width="100%"
+    height="200"
+    style="border:0;"
+    allowfullscreen=""
+    loading="lazy"
+    referrerpolicy="no-referrer-when-downgrade">
+  </iframe>
+</div>
+
+  <div class="social-icon">
+  <a href="https://www.instagram.com/teamyasaction/" target="_blank" rel="noopener noreferrer">
+    <i class="fa-brands fa-instagram"></i>
+  </a>
+      </div>
+      </div>
+    <!-- Right Column -->
+    <div class="contact-form">
+      <h2>CONTACT US</h2>
+       <form id="contact-form" action="https://formspree.io/f/mvgadeev" method="POST"> <!--WEBSITE FORMS ARE HERE-->
+        <div class="name-fields">
+          <div class="form-group">
+            <label for="first-name">FIRST NAME <span>(required)</span></label>
+            <input type="text" id="first-name" name="first-name" required />
+          </div>
+          <div class="form-group">
+            <label for="last-name">LAST NAME <span>(required)</span></label>
+            <input type="text" id="last-name" name="last-name" required />
+          </div>
+        </div>
+
+        <div class="email-message-fields">
+          <div class="form-group">
+            <label for="email">EMAIL <span>(required)</span></label>
+            <input type="email" id="email" name="email" required />
+          </div>
+          <div class="form-group">
+            <label for="message">MESSAGE <span>(required)</span></label>
+            <textarea id="message" name="message" rows="5" required></textarea>
+          </div>
+        </div>
+
+    <div class="button-row">
+  <button type="submit">SUBMIT</button>
+  <a href="mailto:info@teamyas.com" class="email-link">OR EMAIL US DIRECTLY</a>
+</div>
+      </form>
+      <div id="status-message" style="margin-top: 20px; font-weight: bold;"></div>
+    </div>
+
+  </div>
+</section>
+
+
+  <script src="script.js" defer></script>
+
+<!--IMAGE ZOOM-->  
+<!-- <div id="image-modal" class="modal" onclick="closeModal(event)">
+  <span class="modal-close" onclick="closeModal(event)">&times;</span>
+  <img class="modal-content" id="modal-img" />
+</div> THIS IS BROKEN-->
+ <footer class="site-footer">
+  <p>WEBSITE DESIGNED IN HOUSE @ TEAM YAS ACTION DESIGN</p>
+</footer>  
+</body>
+</html>
+
+
+
+
