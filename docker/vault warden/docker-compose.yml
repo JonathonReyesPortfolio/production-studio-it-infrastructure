@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  vaultwarden:
+    image: vaultwarden/server:1.30.5
+    container_name: vaultwarden
+    restart: unless-stopped 
+    environment:
+      WEBSOCKET_ENABLED: "true"      
+      SIGNUPS_ALLOWED: "false"
+      ADMIN_TOKEN: "4f910c78f60c2e94d8041b34da4451f750a3c48dbfd58eacb57babbb76b966fc"
+      PUSH_INTERVAL_MS: "2000"
+    volumes:
+      - /volume1/docker/vaultwarden/data:/data
+    networks:
+      - internal_net
+    dns:
+      - 172.22.0.5  # Pi-hole container IP
+    ports:
+      - "8082:80" # web portal via direct IP
+      - "3012:3012"
+    
+
+networks:
+  internal_net:
+    external: true

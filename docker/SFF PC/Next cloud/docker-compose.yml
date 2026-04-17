@@ -1,0 +1,43 @@
+version: '3.8'
+
+services:
+  nextcloud:
+    image: nextcloud:latest
+    user: "33:33"
+    container_name: nextcloud
+    restart: unless-stopped
+    ports:
+      - "8085:80"
+    volumes:
+      - ./nextcloud/app:/var/www/html
+      - /home/teamyas/test-website:/mnt/test-website  # 👈 Your external folder
+    environment:
+      - MYSQL_HOST=db
+      - MYSQL_DATABASE=nextcloud
+      - MYSQL_USER=nextcloud
+      - MYSQL_PASSWORD=secret
+    depends_on:
+      - db
+    networks:
+      - genos_net
+    dns:
+      - 192.168.0.60   # ← your AdGuard IP, or whatever resolves .lan domains
+
+  db:
+    image: mariadb:10.6
+    container_name: nextcloud_db
+    restart: unless-stopped
+    environment:
+      - MYSQL_ROOT_PASSWORD=supersecret
+      - MYSQL_DATABASE=nextcloud
+      - MYSQL_USER=nextcloud
+      - MYSQL_PASSWORD=secret
+    volumes:
+      - ./nextcloud/db:/var/lib/mysql
+    networks:
+      - genos_net
+
+
+networks:
+  genos_net:
+    external: true

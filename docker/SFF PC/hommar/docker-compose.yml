@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  homarr:
+    image: ghcr.io/ajnart/homarr:latest
+    container_name: homarr
+    restart: unless-stopped
+    networks:
+      - genos_net
+    ports:
+      - "7575:7575"
+    volumes:
+      - ./configs:/app/data/configs
+      - ./data:/data
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./public:/app/public/custom
+    dns:
+      - 192.168.0.60  # 👈 Replace with your AdGuard or Pi-hole IP
+
+networks:
+  genos_net:
+    external: true

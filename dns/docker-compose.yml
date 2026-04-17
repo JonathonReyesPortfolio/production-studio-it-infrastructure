@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  npm:
+    image: jc21/nginx-proxy-manager:latest
+    container_name: nginx-proxy-manager
+    restart: unless-stopped
+    ports:
+      - "4443:443"   # HTTPS
+      - "8081:80"    # HTTP (UI access)
+      - "81:81"      # Admin interface
+    volumes:
+      - /volume1/docker/nginx-proxy-manager/data:/data
+      - /volume1/docker/nginx-proxy-manager/letsencrypt:/etc/letsencrypt
+      - /volume1/docker/npm-hosts:/etc/hosts:ro
+    networks:
+      - internal_net
+    dns:
+      - 172.22.0.5
+      - 1.1.1.1
+
+networks:
+  internal_net:
+    external: true

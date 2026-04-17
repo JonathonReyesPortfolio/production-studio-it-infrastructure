@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  excalidraw-client:
+    image: excalidraw/excalidraw:latest
+    container_name: excalidraw-client
+    restart: unless-stopped
+    networks:
+      - internal_net
+    ports:
+      - "8085:80" # 8085 NAS -> 80 container
+
+networks:
+  internal_net:
+    external: true

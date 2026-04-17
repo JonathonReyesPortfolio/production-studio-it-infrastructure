@@ -1,0 +1,41 @@
+version: '3'
+
+networks:
+  internal_net:
+    external: true
+
+services:
+  wikijs:
+    image: requarks/wiki:2
+    container_name: wikijs
+    depends_on:
+      - db
+    environment:
+      - DB_TYPE=postgres
+      - DB_HOST=db
+      - DB_PORT=5432
+      - DB_USER=wikijs
+      - DB_PASS=wikijs_pass
+      - DB_NAME=wikijs
+      - TZ=Australia/Sydney
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./data:/wiki/data
+    networks:
+      - internal_net
+    restart: unless-stopped
+
+  db:
+    image: postgres:13
+    container_name: wikijs_db
+    environment:
+      - POSTGRES_USER=wikijs
+      - POSTGRES_PASSWORD=wikijs_pass
+      - POSTGRES_DB=wikijs
+      - TZ=Australia/Sydney
+    volumes:
+      - ./pgdata:/var/lib/postgresql/data
+    networks:
+      - internal_net
+    restart: unless-stopped

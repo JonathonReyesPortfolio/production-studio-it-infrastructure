@@ -1,0 +1,44 @@
+version: '3.8'
+
+services:
+  bookstack-db:
+    image: lscr.io/linuxserver/mariadb
+    container_name: bookstack_db
+    restart: unless-stopped
+    environment:
+      - MYSQL_ROOT_PASSWORD=SuperStrongDBPassword
+      - MYSQL_DATABASE=bookstack
+      - MYSQL_USER=bookstack
+      - MYSQL_PASSWORD=SuperStrongDBPassword
+    volumes:
+      - /volume1/docker/bookstack/db:/config
+    networks:
+      - internal_net
+
+  bookstack:
+    image: solidnerd/bookstack:latest
+    container_name: bookstack
+    restart: unless-stopped
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - DB_HOST=bookstack-db
+      - DB_DATABASE=bookstack
+      - DB_USERNAME=bookstack
+      - DB_PASSWORD=SuperStrongDBPassword
+      - APP_URL=https://bookstack.teamyas.lan:4443
+      - APP_KEY=base64:n3L0GnlouMyvIXKwllPBKVW2M+BOP6nEq/IiC3HimME=
+      - S6_BEHAVIOUR_IF_STAGE2_FAILS=2
+      - S6_CMD_WAIT_FOR_SERVICES_MAXTIME=60
+    volumes:
+      - /volume1/docker/bookstack/config:/config
+    networks:
+      - internal_net
+    ports:
+      - "8088:8080"
+    depends_on:
+      - bookstack-db
+
+networks:
+  internal_net:
+    external: true
